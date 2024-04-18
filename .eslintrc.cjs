@@ -77,6 +77,7 @@ module.exports = {
     'react/button-has-type': 0,
     'import/extensions': 0,
     'no-return-assign': 0,
+    'react/jsx-props-no-spreading': ['warn'], // props로 받은 것 바로 props로 넘기기 허용
   },
   ignorePatterns: ['vite.config.ts', '**/*.js'],
 };
