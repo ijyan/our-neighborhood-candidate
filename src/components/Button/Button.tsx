@@ -14,22 +14,21 @@ interface IProps {
 }
 
 const buttonAppearance = {
-  fill: 'flex justify-center items-center rounded-md whitespace-nowrap',
+  fill: 'flex justify-center items-center whitespace-nowrap',
   outline:
     'flex justify-center items-center rounded-md whitespace-nowrap border',
 };
 
 const buttonSize = {
-  sm: 'px-3 text-sm h-9',
-  md: 'w-18 h-8',
-  lg: 'w-24 h-10',
+  sm: 'px-3 h-9 rounded-md text-sm ',
+  md: 'px-4 h-10 rounded-lg text-sm',
+  lg: 'px-5 h-14 rounded-lg text-base',
 };
 
 const buttonColor = {
   base: 'text-gray-800 hover:bg-gray-800/[.04] active:bg-gray-800/[.08]',
   primary:
     'bg-gray-700 text-white hover:bg-gray-800 active:text-gray-200 border-gray-800',
-  secondary: 'bg-red-400 text-white',
 };
 
 export default function Button({
