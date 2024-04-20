@@ -25,17 +25,20 @@ type Story = StoryObj<typeof meta>;
 export const Small: Story = {
   args: {
     size: 'sm',
+    label: '바로가기',
   },
 };
 
 export const Medium: Story = {
   args: {
     size: 'md',
+    label: '바로가기',
   },
 };
 
 export const Large: Story = {
   args: {
     size: 'lg',
+    label: '바로가기',
   },
 };

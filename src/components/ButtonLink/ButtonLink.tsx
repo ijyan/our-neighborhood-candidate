@@ -1,12 +1,10 @@
-import { Link } from 'react-router-dom';
-
 interface IProps {
   /** 링크 버튼의 텍스트 */
   label?: string;
-  /** 링크 버튼의 URL */
-  url?: string;
   /** 버튼 크기 (기본값: sm) */
   size?: 'sm' | 'md' | 'lg';
+  /** 이외의 다른 스타일(tailwind) */
+  otherStyle?: string;
 }
 
 const buttonLinkSize = {
@@ -15,26 +13,34 @@ const buttonLinkSize = {
   lg: 'text-lg',
 };
 
+const buttonLinkIconSize = {
+  sm: 24,
+  md: 26,
+  lg: 28,
+};
+
 export default function ButtonLink({
-  label = '바로가기',
-  url = '#',
+  label,
   size = 'sm',
+  otherStyle,
+  ...props
 }: IProps) {
   return (
-    <Link
-      to={url}
+    <span
       className={[
         'flex',
-        'justify-center',
         'items-center',
+        'text-sky-600',
         buttonLinkSize[size],
+        otherStyle,
       ].join(' ')}
+      {...props}
     >
       {label}
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
+        width={buttonLinkIconSize[size]}
+        height={buttonLinkIconSize[size]}
         fill="none"
         viewBox="0 0 24 24"
       >
@@ -45,6 +51,6 @@ export default function ButtonLink({
           clipRule="evenodd"
         />
       </svg>
-    </Link>
+    </span>
   );
 }
