@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import ButtonLink from '../components/ButtonLink/ButtonLink.tsx';
 
 function Home() {
   const data = [
@@ -19,6 +20,7 @@ function Home() {
       imgAlt: '당선인 공약 이미지',
     },
   ];
+
   return (
     <main>
       <section className="flex justify-center items-center h-screen">
@@ -36,23 +38,7 @@ function Home() {
                 <p className="text-sm text-gray-500 pt-2 sm:text-base">
                   {item.description}
                 </p>
-                <span className="text-sm flex items-center text-sky-600 pt-4">
-                  바로가기
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="#0284c7"
-                      d="M9.783 17.566 8.65 16.434 13.086 12 8.65 7.566l1.132-1.132L15.349 12l-5.566 5.566Z"
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </span>
+                <ButtonLink otherStyle="pt-4" label="바로가기" size="md" />
               </div>
               <div className="hidden md:absolute md:right-12 md:bottom-12 sm:block sm:w-1/4 md:w-[10rem]">
                 <img
