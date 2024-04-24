@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from '@/App.tsx';
 import '@/index.css';
-import Policy from '@/pages/Policy.tsx';
 import Home from '@/pages/Home.tsx';
+import Congressperson from '@/pages/policy/Congressperson.tsx';
+import CongresspersonDetail from '@/pages/policy/CongresspersonDetail.tsx';
+import President from '@/pages/policy/President.tsx';
+import PresidentDetail from '@/pages/policy/PresidentDetail.tsx';
 
 const router = createBrowserRouter([
   {
@@ -14,7 +17,19 @@ const router = createBrowserRouter([
       { index: true, path: '/', element: <Home /> },
       {
         path: '/policy/congressperson',
-        element: <Policy />,
+        element: <Congressperson />,
+      },
+      {
+        path: '/policy/congressperson/:jdName',
+        element: <CongresspersonDetail />,
+      },
+      {
+        path: '/policy/president',
+        element: <President />,
+      },
+      {
+        path: '/policy/president/:jdName',
+        element: <PresidentDetail />,
       },
     ],
   },
@@ -22,9 +37,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider
-      router={router}
-      fallbackElement={<div>Loading...</div>} //
-    />
+    <RouterProvider router={router} fallbackElement={<div>Loading...</div>} />
   </React.StrictMode>,
 );

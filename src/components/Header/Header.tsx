@@ -8,8 +8,8 @@ function Header() {
       id: 0,
       title: '정당정책',
       list: [
-        { id: 0, menu: '제22대 국회의원 선거', link: '#' },
-        { id: 1, menu: '제20대 대통령 선거', link: '#' },
+        { id: 0, menu: '제22대 국회의원 선거', link: '/policy/congressperson' },
+        { id: 1, menu: '제20대 대통령 선거', link: '/policy/president' },
       ],
     },
     {
@@ -23,7 +23,7 @@ function Header() {
   ];
 
   return (
-    <header className="w-full">
+    <header className="w-full bg-white">
       <nav className="px-12 max-w-6xl m-auto">
         <div className="flex justify-center items-center h-16 gap-1">
           {link.map(el => (
@@ -43,11 +43,11 @@ function Header() {
                   />
                 </svg>
               </Button>
-              <ul className="flex-col justify-center p-1.5 rounded-md bg-white shadow-3xl gap-0.5 absolute w-40 left-1/2 -translate-x-1/2 top-9 hidden group-hover:flex">
+              <ul className="flex-col justify-center p-1.5 rounded-md bg-white shadow-3xl gap-0.5 absolute w-40 left-1/2 -translate-x-1/2 top-9 hidden group-hover:flex z-10">
                 {el.list.map(item => (
                   <li key={item.id}>
                     <Link
-                      to="/"
+                      to={item.link}
                       className="flex items-center justify-center px-3 h-10 text-sm text-gray-700 hover:bg-gray-800/[.04] transition rounded-md w-full"
                     >
                       {item.menu}

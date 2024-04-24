@@ -1,5 +1,8 @@
 import Button from './Button/Button';
 import ButtonLink from './ButtonLink/ButtonLink';
 import Header from './Header/Header';
+import ImgLoad from './ImgLoad/ImgLoad';
+import Policy from './Policy/Policy';
+import PolicyDetail from './Policy/PolicyDetail';
 
-export { Button, ButtonLink, Header };
+export { Button, ButtonLink, Header, ImgLoad, Policy, PolicyDetail };
