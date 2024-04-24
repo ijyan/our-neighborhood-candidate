@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Button } from '../Button';
 import { IHeader } from './types';
+import Button from '../Button/Button.tsx';
 
 function Header() {
   const link: IHeader[] = [
@@ -43,7 +43,7 @@ function Header() {
                   />
                 </svg>
               </Button>
-              <ul className="flex-col justify-center p-1.5 rounded-md bg-white shadow-3xl gap-0.5 absolute w-[12rem] left-1/2 -translate-x-1/2 top-9 hidden group-hover:flex">
+              <ul className="flex-col justify-center p-1.5 rounded-md bg-white shadow-3xl gap-0.5 absolute w-40 left-1/2 -translate-x-1/2 top-9 hidden group-hover:flex">
                 {el.list.map(item => (
                   <li key={item.id}>
                     <Link

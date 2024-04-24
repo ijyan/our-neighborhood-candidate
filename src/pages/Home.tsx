@@ -7,7 +7,7 @@ function Home() {
       id: 1,
       title: '정당정책 확인하기',
       description: '정당의 정책을 확인하세요!',
-      link: '/policy',
+      link: '/policy/congressperson',
       img: '/images/landing-01.png',
       imgAlt: '정당정책 이미지',
     },
@@ -29,7 +29,7 @@ function Home() {
             <Link
               key={item.id}
               to={item.link}
-              className="p-8 w-full bg-gray-100 rounded-3xl flex justify-between items-center relative hover:bg-[#eaedf1] transition md:px-16 md:py-20 md:items-start md:p-12"
+              className="p-8 w-full bg-[#f8f9fb] rounded-3xl flex justify-between items-center relative hover:bg-[#f3f4f8] transition md:px-16 md:py-20 md:items-start md:p-12"
             >
               <div>
                 <h3 className="text-gray-800 font-bold text-xl md:text-3xl">
