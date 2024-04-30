@@ -4,10 +4,14 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from '@/App.tsx';
 import '@/index.css';
 import Home from '@/pages/Home.tsx';
-import Congressperson from '@/pages/policy/Congressperson.tsx';
-import CongresspersonDetail from '@/pages/policy/CongresspersonDetail.tsx';
-import President from '@/pages/policy/President.tsx';
-import PresidentDetail from '@/pages/policy/PresidentDetail.tsx';
+// policy
+import PolicyParliamentary from '@/pages/policy/Parliamentary.tsx';
+import PolicyParliamentaryDetail from '@/pages/policy/ParliamentaryDetail.tsx';
+import PolicyPresidential from '@/pages/policy/Presidential.tsx';
+import PolicyPresidentialDetail from '@/pages/policy/PresidentialDetail.tsx';
+// elections
+import ElectionsParliamentary from '@/pages/elections/Parliamentary.tsx';
+import ElectionsParliamentaryDetail from '@/pages/elections/ParliamentaryDetail.tsx';
 
 const router = createBrowserRouter([
   {
@@ -16,20 +20,28 @@ const router = createBrowserRouter([
     children: [
       { index: true, path: '/', element: <Home /> },
       {
-        path: '/policy/congressperson',
-        element: <Congressperson />,
+        path: '/policy/parliamentary/22',
+        element: <PolicyParliamentary />,
       },
       {
-        path: '/policy/congressperson/:jdName',
-        element: <CongresspersonDetail />,
+        path: '/policy/parliamentary/22/:jdName',
+        element: <PolicyParliamentaryDetail />,
       },
       {
-        path: '/policy/president',
-        element: <President />,
+        path: '/policy/presidential/20',
+        element: <PolicyPresidential />,
       },
       {
-        path: '/policy/president/:jdName',
-        element: <PresidentDetail />,
+        path: '/policy/presidential/20/:jdName',
+        element: <PolicyPresidentialDetail />,
+      },
+      {
+        path: '/elections/parliamentary/22',
+        element: <ElectionsParliamentary />,
+      },
+      {
+        path: '/elections/parliamentary/22/:huboid',
+        element: <ElectionsParliamentaryDetail />,
       },
     ],
   },

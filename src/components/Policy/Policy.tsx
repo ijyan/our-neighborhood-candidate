@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { IPartyCode } from '@/types';
-import { getPartyCode } from '@/api';
+import { getCommonPartyCodeList } from '@/services';
 import ImgLoad from '@/components/ImgLoad/ImgLoad.tsx';
-import { ButtonLink } from '@/components';
+import ButtonLink from '@/components/ButtonLink/ButtonLink.tsx';
 
 function Policy({ sgId }: { sgId: number }) {
   const [partyCodeData, setPartyCodeData] = useState<IPartyCode[]>([]);
@@ -11,25 +11,25 @@ function Policy({ sgId }: { sgId: number }) {
 
   useEffect(() => {
     // 정당코드
-    const fetchPartyCode = async () => {
+    const fetchCommonPartyCodeList = async () => {
       try {
-        const response = await getPartyCode({ sgId });
+        const response = await getCommonPartyCodeList({ sgId });
         const data = response.data.response.body.items.item;
 
         const updatedImages = data.slice(0, -1).map((item: IPartyCode) => {
           return {
             ...item,
-            image: `../src/assets/party/${item.jdName}.png`,
+            image: `../../../src/assets/party/${item.jdName}.png`,
           };
         });
         setPartyCodeData(updatedImages);
         // console.log('data:', response.data.response.body.items.item);
       } catch (error) {
-        console.error('Failed to Fetch partyCode:', error);
+        console.error('Failed to fetchCommonPartyCodeList:', error);
       }
     };
 
-    fetchPartyCode();
+    fetchCommonPartyCodeList();
   }, [sgId]);
 
   return (

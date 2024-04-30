@@ -1,24 +1,25 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Disclosure } from '@headlessui/react';
-import { Button, ImgLoad } from '@/components';
-import { getPartyPolicyInformation } from '@/api';
-import { IPartyList, IPartyPolicyInformation } from '@/types';
+import Button from '@/components/Button/Button.tsx';
+import ImgLoad from '@/components/ImgLoad/ImgLoad.tsx';
+import { getPartyPlcInfoInqire } from '@/services';
+import {
+  ICommonPartyPlcInfoInqire,
+  IPartyList,
+  IPartyPlcInfoInqire,
+} from '@/types';
 import { PARTY_LIST } from '@/data';
 
 function PolicyDetail({
   numOfRows,
   sgId,
   partyName,
-}: {
-  numOfRows: number;
-  sgId: number;
-  partyName: string | undefined;
-}) {
+}: ICommonPartyPlcInfoInqire) {
   const { jdName } = useParams();
-  const [policyData, setPolicyData] = useState<
-    IPartyPolicyInformation[] | null
-  >([]);
+  const [policyData, setPolicyData] = useState<IPartyPlcInfoInqire[] | null>(
+    [],
+  );
   const [title, setTitle] = useState<string[]>([]);
   const [realName, setRealName] = useState<string[]>([]);
   const [content, setContent] = useState<string[]>([]);
@@ -38,21 +39,21 @@ function PolicyDetail({
 
   /**
    * 특정 조건을 포함하는 키만 필터링하고 그 값을 가져오는 함수
-   * @param {IPartyPolicyInformation} data
-   * @param {string} text
+   * @param {IPartyPlcInfoInqire} data
+   * @param {string} text - text를 포함하는 키 값
    * @returns {string[]}
    */
-  function filterKeys(data: IPartyPolicyInformation, text: string): string[] {
+  function filterKeys(data: IPartyPlcInfoInqire, text: string): string[] {
     return Object.keys(data)
       .filter(key => key.includes(text))
-      .map(titleKey => data[titleKey as keyof IPartyPolicyInformation]);
+      .map(titleKey => data[titleKey as keyof IPartyPlcInfoInqire]);
   }
 
   useEffect(() => {
     // 정당정책정보 조회
     const fetchPartyPolicyInformation = async () => {
       try {
-        const response = await getPartyPolicyInformation({
+        const response = await getPartyPlcInfoInqire({
           numOfRows,
           sgId,
           partyName,
@@ -68,7 +69,7 @@ function PolicyDetail({
         setRealName(filterKeys(data, 'prmsRealmName'));
         setContent(filterKeys(data, 'prmmCont'));
       } catch (error) {
-        console.error('Failed to Fetch partyPolicyInformation: ', error);
+        console.error('Failed to fetchPartyPolicyInformation: ', error);
       }
     };
     fetchPartyPolicyInformation();
@@ -116,7 +117,7 @@ function PolicyDetail({
                         <Disclosure.Button
                           className={`flex w-full justify-between items-center ${open ? '' : 'border-b border-gray-800/[.06]'} py-6 text-left text-gray-700 focus:outline-none focus-visible:ring gap-4`}
                         >
-                          <div className="relative pl-6">
+                          <div className="relative pl-8">
                             <span className="absolute t-0 left-0">
                               {index + 1}.{' '}
                             </span>
@@ -138,7 +139,7 @@ function PolicyDetail({
                             />
                           </svg>
                         </Disclosure.Button>
-                        <Disclosure.Panel className="px-6 pb-6 text-gray-500 font-medium border-b border-gray-800/[.06] whitespace-pre-wrap">
+                        <Disclosure.Panel className="px-8 pb-8 text-gray-500 font-medium border-b border-gray-800/[.06] whitespace-pre-wrap">
                           {content[index]}
                         </Disclosure.Panel>
                       </>

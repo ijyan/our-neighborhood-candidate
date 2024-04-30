@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { IHeader } from './types';
+import { IHeader } from '@/components/Header/Header.types.ts';
 import Button from '../Button/Button.tsx';
 
 function Header() {
@@ -8,16 +8,32 @@ function Header() {
       id: 0,
       title: '정당정책',
       list: [
-        { id: 0, menu: '제22대 국회의원 선거', link: '/policy/congressperson' },
-        { id: 1, menu: '제20대 대통령 선거', link: '/policy/president' },
+        {
+          id: 0,
+          menu: '제22대 국회의원 선거',
+          link: '/policy/parliamentary/22',
+        },
+        {
+          id: 1,
+          menu: '제20대 대통령 선거',
+          link: '/policy/presidential/20',
+        },
       ],
     },
     {
       id: 1,
       title: '당선인 공약',
       list: [
-        { id: 0, menu: '제22대 국회의원 선거', link: '#' },
-        { id: 1, menu: '제20대 대통령 선거', link: '#' },
+        {
+          id: 0,
+          menu: '제22대 국회의원 선거',
+          link: '/elections/parliamentary/22',
+        },
+        {
+          id: 1,
+          menu: '제20대 대통령 선거',
+          link: '/elections/presidential/20',
+        },
       ],
     },
   ];
