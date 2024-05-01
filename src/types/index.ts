@@ -11,11 +11,6 @@ export interface IApiProp {
 
 /**
  * 정당코드 조회 타입
- * : 선거 ID, 정당명 순서 제공하는 정당코드 정보 제공
- *
- * @param pageNo {number} - 페이지 번호
- * @param numOfRows {number} - 한 페이지 결과 수
- * @param sgId {number} - 선거 ID(예: 20240410)
  */
 export interface ICommonPartyCode extends IApiProp {
   sgId: number;
@@ -126,4 +121,33 @@ export interface IWinnerInfo extends ICommonWinnerProps {
   dugsu: number;
   dugyul: number;
   image?: string;
+}
+
+/**
+ * CITY_LIST 타입
+ */
+export interface ICityList {
+  id: string;
+  city: string;
+  districts?: string[];
+}
+
+/**
+ * ApiResponse 타입
+ */
+export interface ApiResponse<T> {
+  response: {
+    header: {
+      resultCode: string;
+      resultMsg: string;
+    };
+    body: {
+      items: {
+        item: T[];
+      };
+      numOfRows: number;
+      pageNo: number;
+      totalCount: number;
+    };
+  };
 }

@@ -9,7 +9,7 @@ interface IProps {
   size?: 'sm' | 'md' | 'lg';
   /** 버튼 크기의 width: 100% 여부 */
   isFullWidth?: boolean;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   children?: React.ReactNode;
   otherStyle?: string;
   /** 버튼 Disabled 여부 */
