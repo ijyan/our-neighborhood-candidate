@@ -15,7 +15,7 @@ interface AxiosState<T> {
   loading: boolean;
 }
 
-function useTestApi<T>(
+function useAxios<T>(
   config: AxiosRequestConfig<T>,
 ): AxiosState<ApiResponse<T>> {
   const [state, setState] = useState<AxiosState<ApiResponse<T>>>({
@@ -49,4 +49,4 @@ function useTestApi<T>(
   return state;
 }
 
-export default useTestApi;
+export default useAxios;

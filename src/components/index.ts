@@ -6,6 +6,7 @@ import Policy from './Policy/Policy';
 import PolicyDetail from './Policy/PolicyDetail';
 import Elections from './Elections/Elections';
 import ElectionsDetail from './Elections/ElectionsDetail';
+import CitySelector from './Select/CitySelector.tsx';
 
 export {
   Button,
@@ -16,4 +17,5 @@ export {
   PolicyDetail,
   Elections,
   ElectionsDetail,
+  CitySelector,
 };
