@@ -12,11 +12,13 @@ import PolicyPresidentialDetail from '@/pages/policy/PresidentialDetail.tsx';
 // elections
 import ElectionsParliamentary from '@/pages/elections/Parliamentary.tsx';
 import ElectionsParliamentaryDetail from '@/pages/elections/ParliamentaryDetail.tsx';
+import NotFound from '@/pages/notFound/notFound.tsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <NotFound />,
     children: [
       { index: true, path: '/', element: <Home /> },
       {
