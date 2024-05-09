@@ -11,11 +11,10 @@ function Parliamentary() {
       <h2 className="text-center text-gray-800 text-5xl font-semibold py-32">
         제22대 국회의원 선거 당선인 공약
       </h2>
-      {/* TODO: sgId 20240410으로 수정 */}
       <Elections
         pageNo={pageNo}
         numOfRows={12}
-        sgId={20200415}
+        sgId={20240410}
         sgTypecode={2}
         sdName={sdName || ''}
         sggName={sggName || ''}

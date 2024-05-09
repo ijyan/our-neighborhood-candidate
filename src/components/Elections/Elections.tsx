@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { ICommonWinnerProps, IWinnerInfo } from '@/types';
 import ImgLoad from '@/components/ImgLoad/ImgLoad.tsx';
 import ButtonLink from '@/components/ButtonLink/ButtonLink.tsx';
 import useAxios from '@/hooks/useAxios.ts';
 import CitySelector from '@/components/Select/CitySelector.tsx';
+import Pagination from '@/components/Pagination/Pagination.tsx';
 
 function Elections({
   pageNo,
@@ -17,11 +18,14 @@ function Elections({
   const [state, setState] = useState<{
     data: IWinnerInfo[];
     totalCount: number;
+    numOfRows: number;
   }>({
     data: [],
     totalCount: 0,
+    numOfRows: 0,
   });
 
+  // 현재 url 받아옴
   const location = useLocation();
 
   // 데이터 가져오기
@@ -34,6 +38,7 @@ function Elections({
     if (data) {
       const res = data.response.body.items.item;
       const total = data.response.body.totalCount;
+      const rows = data.response.body.numOfRows;
       const updatedImages = res.map((item: IWinnerInfo) => {
         return {
           ...item,
@@ -44,9 +49,40 @@ function Elections({
         ...prev,
         data: updatedImages,
         totalCount: total,
+        numOfRows: rows,
       }));
+      if (pageNo > Math.ceil(total / numOfRows)) {
+        setState({
+          data: [],
+          totalCount: 0,
+          numOfRows: 0,
+        });
+      }
     }
-  }, [data]);
+  }, [data, numOfRows, pageNo]);
+
+  // 페이징
+  const [, setQuery] = useSearchParams();
+  const handleChangePageClick = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    num: number,
+  ) => {
+    // 클릭 시 페이지 이동
+    e.preventDefault();
+    const params: Record<string, string> = {
+      pageNo: num.toString(),
+    };
+
+    if (sdName !== undefined) {
+      params.sdName = sdName;
+    }
+
+    if (sggName !== undefined) {
+      params.sggName = sggName;
+    }
+
+    setQuery(params);
+  };
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -61,36 +97,44 @@ function Elections({
         </div>
       </div>
       {state.data.length ? (
-        <ul className="grid grid-cols-3 gap-8 pb-32">
-          {state.data.map(item => (
-            <li
-              key={item.huboid}
-              className="rounded-2xl overflow-hidden bg-white hover:bg-[#f3f4f8] transition"
-            >
-              <Link to={`${location.pathname}/${item.huboid}`}>
-                <div className="flex p-3">
-                  <div className="aspect-3/4 flex justify-center items-center overflow-hidden w-full rounded-xl">
-                    <ImgLoad url={item.image} alt={item.name} />
-                  </div>
-                  <div className="flex flex-col justify-between p-5 w-full">
-                    <div>
-                      <h3 className="text-3xl text-gray-700 pb-3">
-                        {item.name}
-                      </h3>
-                      <p className="text-gray-500">{item.jdName}</p>
-                      <p className="text-gray-500">{item.sggName}</p>
+        <>
+          <ul className="grid grid-cols-3 gap-8">
+            {state.data.map(item => (
+              <li
+                key={item.huboid}
+                className="rounded-2xl overflow-hidden bg-white hover:bg-[#f3f4f8] transition"
+              >
+                <Link to={`${location.pathname}/${item.huboid}`}>
+                  <div className="flex p-3">
+                    <div className="aspect-3/4 flex justify-center items-center overflow-hidden w-full rounded-xl">
+                      <ImgLoad url={item.image} alt={item.name} />
                     </div>
-                    <ButtonLink
-                      otherStyle="justify-end"
-                      label="상세보기"
-                      size="sm"
-                    />
+                    <div className="flex flex-col justify-between p-5 w-full">
+                      <div>
+                        <h3 className="text-3xl text-gray-700 pb-3">
+                          {item.name}
+                        </h3>
+                        <p className="text-gray-500">{item.jdName}</p>
+                        <p className="text-gray-500">{item.sggName}</p>
+                      </div>
+                      <ButtonLink
+                        otherStyle="justify-end"
+                        label="상세보기"
+                        size="sm"
+                      />
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Pagination
+            isMobile={false}
+            onChangePage={handleChangePageClick}
+            pageNo={pageNo}
+            endPageNo={Math.ceil(state.totalCount / state.numOfRows)}
+          />
+        </>
       ) : (
         <div className="flex flex-col justify-center items-center gap-5 py-24">
           <svg
