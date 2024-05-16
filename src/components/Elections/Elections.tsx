@@ -104,7 +104,9 @@ function Elections({
                 key={item.huboid}
                 className="rounded-2xl overflow-hidden bg-white hover:bg-[#f3f4f8] transition"
               >
-                <Link to={`${location.pathname}/${item.huboid}`}>
+                <Link
+                  to={`${location.pathname}/detail?sdName=${item.sdName}&sggName=${item.sggName}`}
+                >
                   <div className="flex p-3">
                     <div className="aspect-3/4 flex justify-center items-center overflow-hidden w-full rounded-xl">
                       <ImgLoad url={item.image} alt={item.name} />
@@ -129,7 +131,6 @@ function Elections({
             ))}
           </ul>
           <Pagination
-            isMobile={false}
             onChangePage={handleChangePageClick}
             pageNo={pageNo}
             endPageNo={Math.ceil(state.totalCount / state.numOfRows)}

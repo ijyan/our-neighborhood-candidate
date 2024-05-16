@@ -21,7 +21,7 @@ export interface IPartyCode extends ICommonPartyCode {
 export interface ICommonPartyPlcInfoInqire {
   pageNo?: number; // 페이지 번호
   numOfRows?: number; // 한 페이지 결과 수
-  sgId: string; // 선거 ID(예: 20240410)
+  sgId: number; // 선거 ID(예: 20240410)
   partyName: string | undefined; // 정당명(예: 00당)
 }
 

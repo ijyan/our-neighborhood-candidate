@@ -46,6 +46,7 @@ function ImgLoad({ url, otherStyle, alt }: IProp) {
           src={url}
           alt={alt}
           onError={() => setLoadError(true)}
+          loading="lazy"
         />
       )}
     </>

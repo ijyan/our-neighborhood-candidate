@@ -84,7 +84,7 @@ function PolicyDetail({
 
   return (
     <section className="relative">
-      <div className="max-w-3xl m-auto px-6 py-32 flex flex-col gap-6">
+      <div className="max-w-3xl m-auto px-6 py-24 flex flex-col gap-6">
         <div className="bg-white p-10 rounded-3xl flex justify-center items-center w-full gap-6">
           <div className="w-32 h-32 border rounded-xl flex items-center justify-center p-3">
             <ImgLoad
@@ -155,17 +155,10 @@ function PolicyDetail({
           )}
         </div>
       </div>
-      {info ? (
-        <div
-          className="absolute w-full top-0 -z-10 h-[232px]"
-          style={{ backgroundColor: `${info.color || '#333'}` }}
-        />
-      ) : (
-        <div
-          className="absolute w-full top-0 -z-10 h-[232px]"
-          style={{ backgroundColor: '#333' }}
-        />
-      )}
+      <div
+        className="absolute w-full top-0 -z-10 h-[200px]"
+        style={{ backgroundColor: `${info.color || '#333'}` }}
+      />
     </section>
   );
 }
