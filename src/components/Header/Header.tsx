@@ -11,7 +11,7 @@ function Header() {
         {
           id: 0,
           menu: '제22대 국회의원 선거',
-          link: '/policy/parliamentary/22',
+          link: '/policy/parliamentary/22?pageNo=1',
         },
         {
           id: 1,
