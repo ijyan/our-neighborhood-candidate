@@ -3,15 +3,16 @@ import { useEffect, useState } from 'react';
 import { Disclosure } from '@headlessui/react';
 import Button from '@/components/Button/Button.tsx';
 import ImgLoad from '@/components/ImgLoad/ImgLoad.tsx';
-import { getPartyPlcInfoInqire } from '@/services';
 import {
   ICommonPartyPlcInfoInqire,
   IPartyList,
   IPartyPlcInfoInqire,
 } from '@/types';
 import { PARTY_LIST } from '@/data';
+import useAxios from '@/hooks/useAxios.ts';
 
 function PolicyDetail({
+  pageNo,
   numOfRows,
   sgId,
   partyName,
@@ -49,38 +50,41 @@ function PolicyDetail({
       .map(titleKey => data[titleKey as keyof IPartyPlcInfoInqire]);
   }
 
-  useEffect(() => {
-    // 정당정책정보 조회
-    const fetchPartyPolicyInformation = async () => {
-      try {
-        const response = await getPartyPlcInfoInqire({
-          numOfRows,
-          sgId,
-          partyName,
-        });
-        const tmp = response.data.response.body;
-        if (!tmp) {
-          setPolicyData(null);
-          return;
-        }
-        const data = response.data.response.body.items.item[0];
-        setPolicyData(data);
-        setTitle(filterKeys(data, 'prmsTitle'));
-        setRealName(filterKeys(data, 'prmsRealmName'));
-        setContent(filterKeys(data, 'prmmCont'));
-      } catch (error) {
-        console.error('Failed to fetchPartyPolicyInformation: ', error);
-      }
-    };
-    fetchPartyPolicyInformation();
-  }, [sgId, partyName, numOfRows]);
+  // 데이터 가져오기
+  const { data, error, loading } = useAxios<IPartyPlcInfoInqire>({
+    // 정당정책정보
+    url: `/PartyPlcInfoInqireService/getPartyPlcInfoInqire?serviceKey=${import.meta.env.VITE_API_KEY}&pageNo=${pageNo}&numOfRows=${numOfRows}&resultType=json&sgId=${sgId}&partyName=${partyName}`,
+    method: 'get',
+  });
 
   useEffect(() => {
-    const data = PARTY_LIST.filter(item =>
+    // 데이터 가져오기
+    if (data) {
+      const res = data.response.body.items.item;
+      const updatedImages = res.map((item: IPartyPlcInfoInqire) => {
+        return {
+          ...item,
+          image: `../../../src/assets/party/${jdName}.png`,
+        };
+      });
+
+      setPolicyData(updatedImages);
+      setTitle(filterKeys(res[0], 'prmsTitle'));
+      setRealName(filterKeys(res[0], 'prmsRealmName'));
+      setContent(filterKeys(res[0], 'prmmCont'));
+    }
+  }, [data, numOfRows, pageNo, jdName]);
+
+  useEffect(() => {
+    const list = PARTY_LIST.filter(item =>
       item.jdName === jdName ? item.color : '',
     );
-    setInfo(data[0]);
+    setInfo(list[0]);
   }, [jdName]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  if (!data) return <p>No data found.</p>;
 
   return (
     <section className="relative">
@@ -121,7 +125,7 @@ function PolicyDetail({
                             <span className="absolute t-0 left-0">
                               {index + 1}.{' '}
                             </span>
-                            {`[${realName[index]}] ${item}`}
+                            {`[${realName[index]}]${item}`}
                           </div>
                           <svg
                             width="24"
@@ -155,10 +159,17 @@ function PolicyDetail({
           )}
         </div>
       </div>
-      <div
-        className="absolute w-full top-0 -z-10 h-[200px]"
-        style={{ backgroundColor: `${info.color || '#333'}` }}
-      />
+      {info ? (
+        <div
+          className="absolute w-full top-0 -z-10 h-[232px]"
+          style={{ backgroundColor: `${info.color}` }}
+        />
+      ) : (
+        <div
+          className="absolute w-full top-0 -z-10 h-[232px]"
+          style={{ backgroundColor: '#333' }}
+        />
+      )}
     </section>
   );
 }
