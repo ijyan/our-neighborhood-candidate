@@ -53,12 +53,12 @@ function Policy({ pageNo, sgId, numOfRows }: ICommonPartyCode) {
 
   return (
     <>
-      <div className="block text-gray-600 pb-6 text-right">
+      <div className="block text-gray-600 text-sm pb-3 md:text-base md:pb-6 text-right">
         전체 {data.response.body.totalCount}건
       </div>
       {partyData.length ? (
         <>
-          <ul className="grid grid-cols-3 gap-8 pb-32">
+          <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8">
             {partyData.map(item => (
               <li
                 className="rounded-2xl overflow-hidden border border-[#eff2f6] hover:shadow-2xl transition"
@@ -67,16 +67,19 @@ function Policy({ pageNo, sgId, numOfRows }: ICommonPartyCode) {
                 <Link to={`${location.pathname}/${item.jdName}`}>
                   <div
                     id="image-container"
-                    className="flex justify-center items-center w-full h-32 bg-[#f8f9fb]"
+                    className="flex justify-center items-center w-full h-24 md:h-32 bg-[#f8f9fb]"
                   >
-                    <ImgLoad url={item.image} otherStyle="max-h-16 max-w-40" />
+                    <ImgLoad
+                      url={item.image}
+                      otherStyle="max-h-12 md:max-h-16 max-w-40"
+                    />
                   </div>
-                  <div className="p-6">
-                    <h5 className="text-lg pb-1 text-gray-700">
+                  <div className="p-4 md:p-6">
+                    <h5 className="md:text-lg pb-1 text-gray-700">
                       {item.jdName}
                     </h5>
                     <ButtonLink
-                      otherStyle="justify-end"
+                      otherStyle="justify-end text-sm md:text-base"
                       label="정당정책보기"
                       size="md"
                     />

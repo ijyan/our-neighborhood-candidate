@@ -104,7 +104,7 @@ function Elections({
       )}
       {state.data.length ? (
         <>
-          <ul className="grid grid-cols-3 gap-8">
+          <ul className="grid md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {state.data.map(item => (
               <li
                 key={item.huboid}
@@ -115,9 +115,13 @@ function Elections({
                 >
                   <div className="flex p-3">
                     <div className="aspect-3/4 flex justify-center items-center overflow-hidden w-full rounded-xl">
-                      <ImgLoad url={item.image} alt={item.name} />
+                      <ImgLoad
+                        url={item.image}
+                        alt={item.name}
+                        otherStyle="aspect-3/4 rounded-xl"
+                      />
                     </div>
-                    <div className="flex flex-col justify-between p-5 w-full">
+                    <div className="flex flex-col p-5 w-full justify-center">
                       <div>
                         <h3 className="text-3xl text-gray-700 pb-3">
                           {item.name}
@@ -126,7 +130,7 @@ function Elections({
                         <p className="text-gray-500">{item.sggName}</p>
                       </div>
                       <ButtonLink
-                        otherStyle="justify-end"
+                        otherStyle="justify-end pt-4"
                         label="상세보기"
                         size="sm"
                       />

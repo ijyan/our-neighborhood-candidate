@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Disclosure } from '@headlessui/react';
-import Button from '@/components/Button/Button.tsx';
 import ImgLoad from '@/components/ImgLoad/ImgLoad.tsx';
 import {
   ICommonPartyPlcInfoInqire,
@@ -88,28 +87,16 @@ function PolicyDetail({
 
   return (
     <section className="relative">
-      <div className="max-w-3xl m-auto px-6 py-24 flex flex-col gap-6">
-        <div className="bg-white p-10 rounded-3xl flex justify-center items-center w-full gap-6">
-          <div className="w-32 h-32 border rounded-xl flex items-center justify-center p-3">
+      <div className="max-w-3xl pt-16 md:pt-32 m-auto md:py-24">
+        <div className="relative bg-white pt-16 px-6 pb-10 md:px-10 md:pt-24 md:rounded-3xl w-full gap-6">
+          <div className="w-20 h-20 p-2 rounded-lg absolute -top-8 left-6 bg-white md:-top-16 md:left-10 md:w-32 md:h-32 border md:rounded-xl flex items-center justify-center md:p-3">
             <ImgLoad
               url={`../../../src/assets/party/${jdName}.png`}
               otherStyle="text-sm"
             />
           </div>
-          <div className="flex justify-between items-center grow gap-3">
-            <h3 className="text-2xl font-semibold grow">{jdName}</h3>
-            <div className="flex gap-2">
-              <Button appearance="outline" isDisabled={!policyData}>
-                이미지 보기
-              </Button>
-              <Button appearance="outline" isDisabled={!policyData}>
-                PDF 다운로드
-              </Button>
-            </div>
-          </div>
-        </div>
-        <div className="p-10 bg-white rounded-3xl">
-          <h3 className="text-xl pb-8 font-semibold">정당목록</h3>
+          <h3 className="text-2xl font-bold grow">{jdName}</h3>
+          <h3 className="text-lg pt-10 font-semibold">정책목록</h3>
           {policyData ? (
             <ul>
               {title.map((item, index) => (
@@ -119,13 +106,13 @@ function PolicyDetail({
                     {({ open }) => (
                       <>
                         <Disclosure.Button
-                          className={`flex w-full justify-between items-center ${open ? '' : 'border-b border-gray-800/[.06]'} py-6 text-left text-gray-700 focus:outline-none focus-visible:ring gap-4`}
+                          className={`flex w-full justify-between items-center ${open ? '' : 'border-b border-gray-800/[.06]'} py-4 lg:py-6 text-left text-gray-700 focus:outline-none focus-visible:ring gap-4`}
                         >
-                          <div className="relative pl-8">
+                          <div className="relative pl-8 break-normal">
                             <span className="absolute t-0 left-0">
-                              {index + 1}.{' '}
+                              {index + 1}.
                             </span>
-                            {`[${realName[index]}]${item}`}
+                            {`[${realName[index]}] ${item}`}
                           </div>
                           <svg
                             width="24"
@@ -143,7 +130,7 @@ function PolicyDetail({
                             />
                           </svg>
                         </Disclosure.Button>
-                        <Disclosure.Panel className="px-8 pb-8 text-gray-500 font-medium border-b border-gray-800/[.06] whitespace-pre-wrap">
+                        <Disclosure.Panel className="px-8 pb-8 text-gray-500 font-medium border-b border-gray-800/[.06] whitespace-pre-wrap break-normal">
                           {content[index]}
                         </Disclosure.Panel>
                       </>
@@ -161,12 +148,12 @@ function PolicyDetail({
       </div>
       {info ? (
         <div
-          className="absolute w-full top-0 -z-10 h-[232px]"
+          className="absolute w-full top-0 -z-10 h-16 md:h-48"
           style={{ backgroundColor: `${info.color}` }}
         />
       ) : (
         <div
-          className="absolute w-full top-0 -z-10 h-[232px]"
+          className="absolute w-full top-0 -z-10 h-16 md:h-48"
           style={{ backgroundColor: '#333' }}
         />
       )}

@@ -23,8 +23,8 @@ function Home() {
 
   return (
     <main>
-      <section className="flex justify-center items-center h-screen">
-        <div className="flex flex-col w-full m-auto gap-8 p-6 md:flex-row md:max-w-[60rem] md:gap-8 md:h-[32rem]">
+      <section className="flex justify-center items-center h-dvh">
+        <div className="flex flex-col w-full m-auto gap-8 p-8 md:flex-row md:max-w-[60rem] md:gap-8 md:h-[32rem]">
           {data.map(item => (
             <Link
               key={item.id}
@@ -38,9 +38,9 @@ function Home() {
                 <p className="text-sm text-gray-500 pt-2 sm:text-base">
                   {item.description}
                 </p>
-                <ButtonLink otherStyle="pt-4" label="바로가기" size="md" />
+                <ButtonLink otherStyle="pt-4" label="바로가기" size="sm" />
               </div>
-              <div className="hidden md:absolute md:right-12 md:bottom-12 sm:block sm:w-1/4 md:w-[10rem]">
+              <div className="hidden md:absolute md:right-12 md:bottom-12 sm:block sm:w-1/4 md:w-[8rem] lg:w-[10rem]">
                 <img
                   className="w-full h-auto"
                   src={item.img}
