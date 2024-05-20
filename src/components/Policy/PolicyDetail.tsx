@@ -87,7 +87,7 @@ function PolicyDetail({
 
   return (
     <section className="relative">
-      <div className="max-w-3xl pt-16 md:pt-32 m-auto md:py-24">
+      <div className="max-w-3xl pt-32 md:pt-48 m-auto md:py-40">
         <div className="relative bg-white pt-16 px-6 pb-10 md:px-10 md:pt-24 md:rounded-3xl w-full gap-6">
           <div className="w-20 h-20 p-2 rounded-lg absolute -top-8 left-6 bg-white md:-top-16 md:left-10 md:w-32 md:h-32 border md:rounded-xl flex items-center justify-center md:p-3">
             <ImgLoad
@@ -106,7 +106,7 @@ function PolicyDetail({
                     {({ open }) => (
                       <>
                         <Disclosure.Button
-                          className={`flex w-full justify-between items-center ${open ? '' : 'border-b border-gray-800/[.06]'} py-4 lg:py-6 text-left text-gray-700 focus:outline-none focus-visible:ring gap-4`}
+                          className={`flex w-full justify-between items-center ${open ? '' : 'border-b border-gray-800/[.06]'} py-4 md:py-6 text-left text-gray-700 focus:outline-none focus-visible:ring gap-4`}
                         >
                           <div className="relative pl-8 break-normal">
                             <span className="absolute t-0 left-0">
@@ -148,12 +148,12 @@ function PolicyDetail({
       </div>
       {info ? (
         <div
-          className="absolute w-full top-0 -z-10 h-16 md:h-48"
+          className="absolute w-full top-0 -z-10 h-32 md:h-64"
           style={{ backgroundColor: `${info.color}` }}
         />
       ) : (
         <div
-          className="absolute w-full top-0 -z-10 h-16 md:h-48"
+          className="absolute w-full top-0 -z-10 h-32 md:h-64"
           style={{ backgroundColor: '#333' }}
         />
       )}

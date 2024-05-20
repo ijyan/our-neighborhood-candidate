@@ -83,13 +83,13 @@ function ElectionsDetail({
   return (
     <>
       {info && (
-        <div className="max-w-3xl m-auto">
+        <div className="max-w-3xl m-auto pt-20">
           <div className="flex flex-col px-6 gap-8 items-center md:flex-row md:px-6 md:py-24 md:gap-16">
             <div className="aspect-3/4 object-cover flex justify-center items-center overflow-hidden w-full rounded-2xl max-w-80 bg-[#f8f9fb] text-center">
               <ImgLoad url={info.image} alt={info.name} />
             </div>
-            <div className="w-full py-8">
-              <div className="text-3xl font-semibold">
+            <div className="w-full pb-8">
+              <div className="text-2xl md:text-3xl font-semibold">
                 {info.name} | {info.hanjaName}
               </div>
               <ul className="py-8 flex gap-3 flex-col">

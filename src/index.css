@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'NanumSquareNeo-Variable';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2')
+  font-family: 'WavvePADO-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2')
     format('woff2');
   font-weight: normal;
   font-style: normal;
@@ -14,10 +14,6 @@
 }
 
 html {
-  /*font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',*/
-  /*  'Pretendard Variable', Pretendard, Roboto, 'Noto Sans KR', 'Segoe UI',*/
-  /*  'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',*/
-  /*  sans-serif;*/
   font-family:
     'Pretendard Variable',
     Pretendard,
@@ -44,6 +40,10 @@ body {
   padding: 0;
   font-weight: 500;
   @apply text-gray-800;
+}
+
+.wavve-pado {
+  font-family: 'WavvePado-Regular';
 }
 
 .text-overflow {
