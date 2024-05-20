@@ -59,18 +59,22 @@ function PolicyDetail({
   useEffect(() => {
     // 데이터 가져오기
     if (data) {
-      const res = data.response.body.items.item;
-      const updatedImages = res.map((item: IPartyPlcInfoInqire) => {
-        return {
-          ...item,
-          image: `../../../src/assets/party/${jdName}.png`,
-        };
-      });
+      if (data.response.body) {
+        const res = data.response.body.items.item;
+        const updatedImages = res.map((item: IPartyPlcInfoInqire) => {
+          return {
+            ...item,
+            image: `../../../src/assets/party/${jdName}.png`,
+          };
+        });
 
-      setPolicyData(updatedImages);
-      setTitle(filterKeys(res[0], 'prmsTitle'));
-      setRealName(filterKeys(res[0], 'prmsRealmName'));
-      setContent(filterKeys(res[0], 'prmmCont'));
+        setPolicyData(updatedImages);
+        setTitle(filterKeys(res[0], 'prmsTitle'));
+        setRealName(filterKeys(res[0], 'prmsRealmName'));
+        setContent(filterKeys(res[0], 'prmmCont'));
+      } else {
+        setPolicyData(null);
+      }
     }
   }, [data, numOfRows, pageNo, jdName]);
 
