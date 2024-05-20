@@ -57,8 +57,6 @@ function Header() {
     };
   }, []);
 
-  console.log(innerWidth);
-
   return (
     <header className="w-full bg-white z-50 fixed border-b border-gray-800/[.06]">
       {innerWidth < 1024 ? (
