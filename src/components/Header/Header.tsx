@@ -32,7 +32,7 @@ function Header() {
         {
           id: 1,
           menu: '제20대 대통령 선거',
-          link: '/elections/presidential/20',
+          link: '/elections/presidential/20?pageNo=1',
         },
       ],
     },

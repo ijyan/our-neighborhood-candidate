@@ -90,12 +90,18 @@ function Elections({
 
   return (
     <>
-      <div className="flex justify-between items-center pb-6">
-        <CitySelector sdName={sdName || ''} sggName={sggName || ''} />
+      {location.pathname.includes('presidential') ? (
         <div className="text-gray-600 text-right">
           전체 <span className="font-semibold">{state.totalCount}</span>건
         </div>
-      </div>
+      ) : (
+        <div className="flex justify-between items-center pb-6">
+          <CitySelector sdName={sdName || ''} sggName={sggName || ''} />
+          <div className="text-gray-600 text-right">
+            전체 <span className="font-semibold">{state.totalCount}</span>건
+          </div>
+        </div>
+      )}
       {state.data.length ? (
         <>
           <ul className="grid grid-cols-3 gap-8">

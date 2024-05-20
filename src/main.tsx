@@ -12,6 +12,9 @@ import PolicyPresidentialDetail from '@/pages/policy/PresidentialDetail.tsx';
 // elections
 import ElectionsParliamentary from '@/pages/elections/Parliamentary.tsx';
 import ElectionsParliamentaryDetail from '@/pages/elections/ParliamentaryDetail.tsx';
+import ElectionPresidential from '@/pages/elections/Presidential.tsx';
+import ElectionPresidentialDetail from '@/pages/elections/PresidentialDetail.tsx';
+// notFound
 import NotFound from '@/pages/notFound/notFound.tsx';
 
 const router = createBrowserRouter([
@@ -44,6 +47,14 @@ const router = createBrowserRouter([
       {
         path: '/elections/parliamentary/22/:huboid',
         element: <ElectionsParliamentaryDetail />,
+      },
+      {
+        path: '/elections/presidential/20',
+        element: <ElectionPresidential />,
+      },
+      {
+        path: '/elections/presidential/20/:huboid',
+        element: <ElectionPresidentialDetail />,
       },
     ],
   },
