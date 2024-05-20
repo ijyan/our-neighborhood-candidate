@@ -95,7 +95,7 @@ function Elections({
           전체 <span className="font-semibold">{state.totalCount}</span>건
         </div>
       ) : (
-        <div className="md:flex md:justify-between md:items-center px-3 pb-3 md:pb-6">
+        <div className="md:flex md:justify-between md:items-center pb-3 md:pb-6">
           <CitySelector sdName={sdName || ''} sggName={sggName || ''} />
           <div className="pt-3 md:pt-0 text-gray-600 text-right">
             전체 <span className="font-semibold">{state.totalCount}</span>건
@@ -115,11 +115,7 @@ function Elections({
                 >
                   <div className="flex p-3">
                     <div className="aspect-3/4 flex justify-center items-center overflow-hidden w-full rounded-xl">
-                      <ImgLoad
-                        url={item.image}
-                        alt={item.name}
-                        otherStyle="aspect-3/4 rounded-xl"
-                      />
+                      <ImgLoad url={item.image} alt={item.name} />
                     </div>
                     <div className="flex flex-col p-5 w-full justify-center">
                       <div>

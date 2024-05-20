@@ -8,7 +8,7 @@ function Parliamentary() {
   const sggName = query.get('sggName');
   return (
     <section className="max-w-6xl m-auto px-6 md:px-8 lg:px-12">
-      <h2 className="text-center font-bold text-gray-800 text-xl py-14 md:py-16 md:text-4xl lg:text-5xl lg:py-32">
+      <h2 className="text-center font-bold text-gray-800 text-2xl py-14 md:py-16 md:text-4xl lg:text-5xl lg:py-32">
         제22대 국회의원 선거 당선인 공약
       </h2>
       <Elections

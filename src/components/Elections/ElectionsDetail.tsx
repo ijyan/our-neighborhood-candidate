@@ -84,11 +84,11 @@ function ElectionsDetail({
     <>
       {info && (
         <div className="max-w-3xl m-auto">
-          <div className="flex px-6 py-24 items-center gap-16">
-            <div className="aspect-3/4 object-cover flex justify-center items-center overflow-hidden w-full rounded-2xl max-w-80 bg-[#f8f9fb]">
+          <div className="flex flex-col px-6 gap-8 items-center md:flex-row md:px-6 md:py-24 md:gap-16">
+            <div className="aspect-3/4 object-cover flex justify-center items-center overflow-hidden w-full rounded-2xl max-w-80 bg-[#f8f9fb] text-center">
               <ImgLoad url={info.image} alt={info.name} />
             </div>
-            <div className="w-full">
+            <div className="w-full py-8">
               <div className="text-3xl font-semibold">
                 {info.name} | {info.hanjaName}
               </div>
