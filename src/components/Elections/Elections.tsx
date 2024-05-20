@@ -91,20 +91,20 @@ function Elections({
   return (
     <>
       {location.pathname.includes('presidential') ? (
-        <div className="text-gray-600 text-right">
+        <div className="text-gray-600 text-right pb-3 md:pb-6">
           전체 <span className="font-semibold">{state.totalCount}</span>건
         </div>
       ) : (
-        <div className="flex justify-between items-center pb-6">
+        <div className="md:flex md:justify-between md:items-center px-3 pb-3 md:pb-6">
           <CitySelector sdName={sdName || ''} sggName={sggName || ''} />
-          <div className="text-gray-600 text-right">
+          <div className="pt-3 md:pt-0 text-gray-600 text-right">
             전체 <span className="font-semibold">{state.totalCount}</span>건
           </div>
         </div>
       )}
       {state.data.length ? (
         <>
-          <ul className="grid md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {state.data.map(item => (
               <li
                 key={item.huboid}
@@ -123,7 +123,7 @@ function Elections({
                     </div>
                     <div className="flex flex-col p-5 w-full justify-center">
                       <div>
-                        <h3 className="text-3xl text-gray-700 pb-3">
+                        <h3 className="text-2xl pb-1.5 font-semibold md:text-3xl text-gray-700 md:pb-3">
                           {item.name}
                         </h3>
                         <p className="text-gray-500">{item.jdName}</p>

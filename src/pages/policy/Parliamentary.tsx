@@ -6,7 +6,7 @@ function Parliamentary() {
   const pageNo = parseInt(query.get('pageNo') || '1', 10);
   return (
     <section className="max-w-6xl m-auto px-6 md:px-8 lg:px-12">
-      <h2 className="text-center font-bold text-gray-800 text-xl py-10 md:py-16 md:text-4xl lg:text-5xl lg:py-32">
+      <h2 className="text-center font-bold text-gray-800 text-xl py-14 md:py-16 md:text-4xl lg:text-5xl lg:py-32">
         제22대 국회의원 선거 정당 정책
       </h2>
       <Policy sgId={20240410} pageNo={pageNo} numOfRows={12} />

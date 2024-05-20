@@ -57,16 +57,42 @@ function CitySelector({
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const { body } = document;
+
+    if (!isOpen) {
+      body.style.overflow = 'auto';
+      body.style.position = 'static';
+      body.style.left = '0px';
+      body.style.right = '0px';
+    } else {
+      body.style.overflow = 'hidden';
+      body.style.position = 'fixed';
+      body.style.left = '0px';
+      body.style.right = '0px';
+    }
+
+    // Cleanup function to remove the styles when the component unmounts or isOpen changes
+    return () => {
+      body.style.overflow = '';
+      body.style.position = '';
+      body.style.left = '';
+      body.style.right = '';
+    };
+  }, [isOpen]);
+
   return (
-    <div className="w-64">
+    <div className="md:w-64">
       <button
         className="relative w-full cursor-pointer rounded-lg bg-white py-2 pl-3 pr-10 text-left border focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="지역 선택"
       >
-        {select.city
-          ? `${select.city[0]}${select.fullCity ? `, ${select.fullCity}` : ''}`
-          : '시ㆍ도ㆍ선거구를 선택하세요.'}
+        <span className="text-overflow">
+          {select.city
+            ? `${select.city[0]}${select.fullCity ? `, ${select.fullCity}` : ''}`
+            : '시ㆍ도ㆍ선거구를 선택하세요.'}
+        </span>
         <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -85,14 +111,41 @@ function CitySelector({
       </button>
       {isOpen && (
         <>
-          <div className="absolute mt-2 w-96 bg-white shadow-md rounded-lg text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-30">
-            <div className="w-full flex">
-              <ul className="w-1/3 p-2 border-r max-h-60 overflow-y-auto shrink-0">
+          <div className="fixed inset-0 w-full shadow-none md:absolute md:inset-auto md:mt-2 md:w-96 bg-white md:shadow-md md:rounded-lg text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-30">
+            <div className="md:hidden">
+              <div className="text-right">
+                <button
+                  type="button"
+                  className="m-5"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <span className="a11y-hidden">닫기</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <g fill="none" fillRule="evenodd">
+                      <path d="M0 0h24v24H0z" />
+                      <path
+                        stroke="#000"
+                        strokeWidth="2"
+                        d="M20 4 4 20M4 4l16 16"
+                      />
+                    </g>
+                  </svg>
+                </button>
+              </div>
+              <h2 className="text-2xl px-6 pb-5 font-bold">지역</h2>
+            </div>
+            <div className="w-full flex border-t h-[calc(100%-116px-81px)] overflow-y-auto md:border-none md:max-h-60">
+              <ul className="w-1/3 p-2 border-r overflow-y-auto shrink-0">
                 {CITY_LIST.map(option => (
                   // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
                   <li
                     key={option.id}
-                    className={`text-gray-600 cursor-pointer pl-4 leading-9 rounded-md hover:bg-[#f8f9fb] mb-0.5 last:mb-0${option.city === select.city ? ' !bg-[#f3f4f8] text-green-500' : ''}`}
+                    className={`text-gray-600 cursor-pointer pl-4 leading-10 rounded-md hover:bg-[#f8f9fb] mb-0.5 last:mb-0${option.city === select.city ? ' !bg-[#f3f4f8] text-green-500 font-bold' : ''}`}
                     onClick={() => handleSelect(option)}
                   >
                     {option.city[0]}
@@ -101,13 +154,13 @@ function CitySelector({
               </ul>
               {/* {select.city?.districts ? ( */}
               {select.districts ? (
-                <ul className="w-2/3 p-2 max-h-60 overflow-y-auto">
+                <ul className="w-2/3 p-2 overflow-y-auto">
                   {select.districts?.map((item, idx) => (
                     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
                     <li
                       // eslint-disable-next-line react/no-array-index-key
                       key={idx}
-                      className={`text-gray-600 cursor-pointer pl-4 leading-9 rounded-md hover:bg-[#f8f9fb] mb-0.5 last:mb-0${item === select.fullCity ? ' !bg-[#f3f4f8] text-green-500' : ''}`}
+                      className={`text-gray-600 cursor-pointer pl-4 leading-10 rounded-md hover:bg-[#f8f9fb] mb-0.5 last:mb-0${item === select.fullCity ? ' !bg-[#f3f4f8] text-green-500 font-bold' : ''}`}
                       onClick={() =>
                         setSelect(prev => ({
                           ...prev,
@@ -125,10 +178,16 @@ function CitySelector({
                 </div>
               )}
             </div>
-            <div className="flex justify-end p-2 border-t">
+            <div className="flex p-4 md:justify-end md:p-2 border-t">
+              <button
+                className="md:hidden w-full text-white bg-green-500 p-3 text-base transition flex justify-center items-centerrounded-md rounded-md hover:bg-green-600 active:bg-green-600"
+                onClick={handleSubmit}
+              >
+                적용하기
+              </button>
               <Button
                 appearance="fill"
-                otherStyle="text-green-500"
+                otherStyle="text-green-500 hidden md:block"
                 onClick={handleSubmit}
               >
                 적용하기
