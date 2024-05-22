@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Disclosure } from '@headlessui/react';
 import ImgLoad from '@/components/ImgLoad/ImgLoad.tsx';
@@ -18,7 +17,6 @@ function PolicyDetail({
   partyName,
   pageTitle,
 }: ICommonPartyPlcInfoInqire) {
-  const { jdName } = useParams();
   const [policyData, setPolicyData] = useState<IPartyPlcInfoInqire[] | null>(
     [],
   );
@@ -27,7 +25,7 @@ function PolicyDetail({
   const [content, setContent] = useState<string[]>([]);
   const [info, setInfo] = useState<IPartyList>({
     num: '0',
-    jdName,
+    partyName,
     color: '#333',
   });
 
@@ -66,7 +64,7 @@ function PolicyDetail({
         const updatedImages = res.map((item: IPartyPlcInfoInqire) => {
           return {
             ...item,
-            image: `../../../src/assets/party/${jdName}.png`,
+            image: `../../../src/assets/party/${partyName}.png`,
           };
         });
 
@@ -78,14 +76,14 @@ function PolicyDetail({
         setPolicyData(null);
       }
     }
-  }, [data, numOfRows, pageNo, jdName]);
+  }, [data, numOfRows, pageNo, partyName]);
 
   useEffect(() => {
     const list = PARTY_LIST.filter(item =>
-      item.jdName === jdName ? item.color : '',
+      item.partyName === partyName ? item.color : '',
     );
     setInfo(list[0]);
-  }, [jdName]);
+  }, [partyName]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -94,18 +92,18 @@ function PolicyDetail({
   return (
     <>
       <Helmet>
-        <title>{`${jdName} | ${pageTitle} - 우리동네일꾼`}</title>
+        <title>{`${partyName} | ${pageTitle} - 우리동네일꾼`}</title>
       </Helmet>
       <section className="relative">
         <div className="max-w-3xl pt-32 md:pt-48 m-auto md:py-40">
           <div className="relative bg-white pt-16 px-6 pb-10 md:px-10 md:pt-24 md:rounded-3xl w-full gap-6">
             <div className="w-20 h-20 p-2 rounded-lg absolute -top-8 left-6 bg-white md:-top-16 md:left-10 md:w-32 md:h-32 border md:rounded-xl flex items-center justify-center md:p-3">
               <ImgLoad
-                url={`../../../src/assets/party/${jdName}.png`}
+                url={`../../../src/assets/party/${partyName}.png`}
                 otherStyle="text-sm"
               />
             </div>
-            <h3 className="text-2xl font-bold grow">{jdName}</h3>
+            <h3 className="text-2xl font-bold grow">{partyName}</h3>
             <h3 className="text-lg pt-10 font-semibold">정책목록</h3>
             {policyData ? (
               <ul>

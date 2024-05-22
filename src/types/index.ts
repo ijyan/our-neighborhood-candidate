@@ -76,7 +76,7 @@ export interface IPartyPlcInfoInqire {
 
 export interface IPartyList {
   num: string;
-  jdName: string | undefined;
+  partyName: string | undefined;
   color: string;
 }
 

@@ -32,6 +32,7 @@ function Policy({ pageNo, sgId, numOfRows, pageTitle }: ICommonPartyCode) {
       setPartyData(updatedImages);
     }
   }, [data, numOfRows, pageNo]);
+  console.log(partyData);
 
   // 페이징
   const [, setQuery] = useSearchParams();
@@ -68,7 +69,9 @@ function Policy({ pageNo, sgId, numOfRows, pageTitle }: ICommonPartyCode) {
                 className="rounded-2xl overflow-hidden border border-[#eff2f6] hover:shadow-2xl transition"
                 key={item.pOrder}
               >
-                <Link to={`${location.pathname}/${item.jdName}`}>
+                <Link
+                  to={`${location.pathname}/detail?partyName=${item.jdName}`}
+                >
                   <div
                     id="image-container"
                     className="flex justify-center items-center w-full h-24 md:h-32 bg-[#f8f9fb]"
