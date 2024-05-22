@@ -9,7 +9,12 @@ function Parliamentary() {
       <h2 className="text-center font-bold text-gray-800 text-2xl pt-28 pb-14 md:pt-48 md:pb-32 md:text-4xl lg:text-5xl">
         제22대 국회의원 선거 정당 정책
       </h2>
-      <Policy sgId={20240410} pageNo={pageNo} numOfRows={12} />
+      <Policy
+        sgId={20240410}
+        pageNo={pageNo}
+        numOfRows={12}
+        pageTitle="제22대 국회의원 선거 정당 정책"
+      />
     </section>
   );
 }

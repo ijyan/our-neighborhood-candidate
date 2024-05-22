@@ -11,6 +11,7 @@ function PresidentialDetail() {
       numOfRows={10}
       sgId={20220309}
       partyName={jdName}
+      pageTitle="제20대 대통령선거 정당 정책"
     />
   );
 }

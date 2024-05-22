@@ -2,6 +2,7 @@ import { ICommonWinnerProps, IWinnerInfo } from '@/types';
 import { useEffect, useState } from 'react';
 import useAxios from '@/hooks/useAxios.ts';
 import ImgLoad from '@/components/ImgLoad/ImgLoad.tsx';
+import { Helmet } from 'react-helmet-async';
 
 function ElectionsDetail({
   pageNo,
@@ -10,6 +11,7 @@ function ElectionsDetail({
   sgTypecode,
   sggName,
   sdName,
+  pageTitle,
 }: ICommonWinnerProps) {
   const [info, setInfo] = useState<Omit<
     IWinnerInfo,
@@ -82,6 +84,9 @@ function ElectionsDetail({
 
   return (
     <>
+      <Helmet>
+        <title>{`${info?.name} | ${pageTitle} - 우리동네일꾼`}</title>
+      </Helmet>
       {info && (
         <div className="max-w-3xl m-auto pt-20">
           <div className="flex flex-col px-6 gap-8 items-center md:flex-row md:px-6 md:py-24 md:gap-16">

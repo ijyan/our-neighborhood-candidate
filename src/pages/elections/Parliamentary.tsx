@@ -18,6 +18,7 @@ function Parliamentary() {
         sgTypecode={2}
         sdName={sdName || ''}
         sggName={sggName || ''}
+        pageTitle="제22대 국회의원 선거 당선인 공약"
       />
     </section>
   );

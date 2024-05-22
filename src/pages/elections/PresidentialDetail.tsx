@@ -14,6 +14,7 @@ function ParliamentaryDetail() {
       sgTypecode={1}
       sdName={sdName || ''}
       sggName={sggName || ''}
+      pageTitle="제20대 대통령선거 당선인 공약"
     />
   );
 }

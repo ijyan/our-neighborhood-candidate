@@ -9,7 +9,12 @@ function Presidential() {
       <h2 className="text-center font-bold text-gray-800 text-2xl pt-28 pb-14 md:pt-48 md:pb-32 md:text-4xl lg:text-5xl">
         제20대 대통령선거 정당 정책
       </h2>
-      <Policy sgId={20220309} pageNo={pageNo} numOfRows={12} />
+      <Policy
+        sgId={20220309}
+        pageNo={pageNo}
+        numOfRows={12}
+        pageTitle="제20대 대통령선거 정당 정책"
+      />
     </section>
   );
 }

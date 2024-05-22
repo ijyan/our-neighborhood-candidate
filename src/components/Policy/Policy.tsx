@@ -5,8 +5,9 @@ import ImgLoad from '@/components/ImgLoad/ImgLoad.tsx';
 import ButtonLink from '@/components/ButtonLink/ButtonLink.tsx';
 import Pagination from '@/components/Pagination/Pagination.tsx';
 import useAxios from '@/hooks/useAxios.ts';
+import { Helmet } from 'react-helmet-async';
 
-function Policy({ pageNo, sgId, numOfRows }: ICommonPartyCode) {
+function Policy({ pageNo, sgId, numOfRows, pageTitle }: ICommonPartyCode) {
   // const [partyCodeData, setPartyCodeData] = useState<IPartyCode[]>([]);
   const [partyData, setPartyData] = useState<IPartyCode[]>([]);
   const location = useLocation();
@@ -53,6 +54,9 @@ function Policy({ pageNo, sgId, numOfRows }: ICommonPartyCode) {
 
   return (
     <>
+      <Helmet>
+        <title>{`${pageTitle} - 우리동네일꾼`}</title>
+      </Helmet>
       <div className="block text-gray-600 text-sm pb-3 md:text-base md:pb-6 text-right">
         전체 {data.response.body.totalCount}건
       </div>

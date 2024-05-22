@@ -16,11 +16,16 @@ import ElectionPresidential from '@/pages/elections/Presidential.tsx';
 import ElectionPresidentialDetail from '@/pages/elections/PresidentialDetail.tsx';
 // notFound
 import NotFound from '@/pages/notFound/notFound.tsx';
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: (
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
+    ),
     errorElement: <NotFound />,
     children: [
       { index: true, path: '/', element: <Home /> },

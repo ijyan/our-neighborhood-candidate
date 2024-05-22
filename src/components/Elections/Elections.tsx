@@ -6,6 +6,7 @@ import ButtonLink from '@/components/ButtonLink/ButtonLink.tsx';
 import useAxios from '@/hooks/useAxios.ts';
 import CitySelector from '@/components/Select/CitySelector.tsx';
 import Pagination from '@/components/Pagination/Pagination.tsx';
+import { Helmet } from 'react-helmet-async';
 
 function Elections({
   pageNo,
@@ -14,6 +15,7 @@ function Elections({
   sgTypecode,
   sggName,
   sdName,
+  pageTitle,
 }: ICommonWinnerProps) {
   const [state, setState] = useState<{
     data: IWinnerInfo[];
@@ -90,6 +92,9 @@ function Elections({
 
   return (
     <>
+      <Helmet>
+        <title>{`${pageTitle} - 우리동네일꾼`}</title>
+      </Helmet>
       {location.pathname.includes('presidential') ? (
         <div className="text-gray-600 text-right pb-3 md:pb-6">
           전체 <span className="font-semibold">{state.totalCount}</span>건

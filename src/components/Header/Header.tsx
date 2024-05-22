@@ -17,7 +17,7 @@ function Header() {
         },
         {
           id: 1,
-          menu: '제20대 대통령 선거',
+          menu: '제20대 대통령선거',
           link: '/policy/presidential/20?pageNo=1',
         },
       ],
@@ -33,7 +33,7 @@ function Header() {
         },
         {
           id: 1,
-          menu: '제20대 대통령 선거',
+          menu: '제20대 대통령선거',
           link: '/elections/presidential/20?pageNo=1',
         },
       ],

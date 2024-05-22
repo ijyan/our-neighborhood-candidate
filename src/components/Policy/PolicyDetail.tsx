@@ -9,12 +9,14 @@ import {
 } from '@/types';
 import { PARTY_LIST } from '@/data';
 import useAxios from '@/hooks/useAxios.ts';
+import { Helmet } from 'react-helmet-async';
 
 function PolicyDetail({
   pageNo,
   numOfRows,
   sgId,
   partyName,
+  pageTitle,
 }: ICommonPartyPlcInfoInqire) {
   const { jdName } = useParams();
   const [policyData, setPolicyData] = useState<IPartyPlcInfoInqire[] | null>(
@@ -90,78 +92,83 @@ function PolicyDetail({
   if (!data) return <p>No data found.</p>;
 
   return (
-    <section className="relative">
-      <div className="max-w-3xl pt-32 md:pt-48 m-auto md:py-40">
-        <div className="relative bg-white pt-16 px-6 pb-10 md:px-10 md:pt-24 md:rounded-3xl w-full gap-6">
-          <div className="w-20 h-20 p-2 rounded-lg absolute -top-8 left-6 bg-white md:-top-16 md:left-10 md:w-32 md:h-32 border md:rounded-xl flex items-center justify-center md:p-3">
-            <ImgLoad
-              url={`../../../src/assets/party/${jdName}.png`}
-              otherStyle="text-sm"
-            />
-          </div>
-          <h3 className="text-2xl font-bold grow">{jdName}</h3>
-          <h3 className="text-lg pt-10 font-semibold">정책목록</h3>
-          {policyData ? (
-            <ul>
-              {title.map((item, index) => (
-                // eslint-disable-next-line react/no-array-index-key
-                <li key={index}>
-                  <Disclosure>
-                    {({ open }) => (
-                      <>
-                        <Disclosure.Button
-                          className={`flex w-full justify-between items-center ${open ? '' : 'border-b border-gray-800/[.06]'} py-4 md:py-6 text-left text-gray-700 focus:outline-none focus-visible:ring gap-4`}
-                        >
-                          <div className="relative pl-8 break-normal">
-                            <span className="absolute t-0 left-0">
-                              {index + 1}.
-                            </span>
-                            {`[${realName[index]}] ${item}`}
-                          </div>
-                          <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className={`${open ? '' : '-rotate-90'} flex-shrink-0`}
-                          >
-                            <path
-                              fillRule="evenodd"
-                              clipRule="evenodd"
-                              d="M6.01 9.32259L7.33094 8L12.505 13.1783L17.6791 8L19 9.32143L12.505 15.82L6.01 9.32259Z"
-                              fill="#374151"
-                            />
-                          </svg>
-                        </Disclosure.Button>
-                        <Disclosure.Panel className="px-8 pb-8 text-gray-500 font-medium border-b border-gray-800/[.06] whitespace-pre-wrap break-normal">
-                          {content[index]}
-                        </Disclosure.Panel>
-                      </>
-                    )}
-                  </Disclosure>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <div className="p-12 text-center text-gray-300">
-              내용이 없습니다.
+    <>
+      <Helmet>
+        <title>{`${jdName} | ${pageTitle} - 우리동네일꾼`}</title>
+      </Helmet>
+      <section className="relative">
+        <div className="max-w-3xl pt-32 md:pt-48 m-auto md:py-40">
+          <div className="relative bg-white pt-16 px-6 pb-10 md:px-10 md:pt-24 md:rounded-3xl w-full gap-6">
+            <div className="w-20 h-20 p-2 rounded-lg absolute -top-8 left-6 bg-white md:-top-16 md:left-10 md:w-32 md:h-32 border md:rounded-xl flex items-center justify-center md:p-3">
+              <ImgLoad
+                url={`../../../src/assets/party/${jdName}.png`}
+                otherStyle="text-sm"
+              />
             </div>
-          )}
+            <h3 className="text-2xl font-bold grow">{jdName}</h3>
+            <h3 className="text-lg pt-10 font-semibold">정책목록</h3>
+            {policyData ? (
+              <ul>
+                {title.map((item, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <li key={index}>
+                    <Disclosure>
+                      {({ open }) => (
+                        <>
+                          <Disclosure.Button
+                            className={`flex w-full justify-between items-center ${open ? '' : 'border-b border-gray-800/[.06]'} py-4 md:py-6 text-left text-gray-700 focus:outline-none focus-visible:ring gap-4`}
+                          >
+                            <div className="relative pl-8 break-normal">
+                              <span className="absolute t-0 left-0">
+                                {index + 1}.
+                              </span>
+                              {`[${realName[index]}] ${item}`}
+                            </div>
+                            <svg
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className={`${open ? '' : '-rotate-90'} flex-shrink-0`}
+                            >
+                              <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="M6.01 9.32259L7.33094 8L12.505 13.1783L17.6791 8L19 9.32143L12.505 15.82L6.01 9.32259Z"
+                                fill="#374151"
+                              />
+                            </svg>
+                          </Disclosure.Button>
+                          <Disclosure.Panel className="px-8 pb-8 text-gray-500 font-medium border-b border-gray-800/[.06] whitespace-pre-wrap break-normal">
+                            {content[index]}
+                          </Disclosure.Panel>
+                        </>
+                      )}
+                    </Disclosure>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="p-12 text-center text-gray-300">
+                내용이 없습니다.
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-      {info ? (
-        <div
-          className="absolute w-full top-0 -z-10 h-32 md:h-64"
-          style={{ backgroundColor: `${info.color}` }}
-        />
-      ) : (
-        <div
-          className="absolute w-full top-0 -z-10 h-32 md:h-64"
-          style={{ backgroundColor: '#333' }}
-        />
-      )}
-    </section>
+        {info ? (
+          <div
+            className="absolute w-full top-0 -z-10 h-32 md:h-64"
+            style={{ backgroundColor: `${info.color}` }}
+          />
+        ) : (
+          <div
+            className="absolute w-full top-0 -z-10 h-32 md:h-64"
+            style={{ backgroundColor: '#333' }}
+          />
+        )}
+      </section>
+    </>
   );
 }
 

@@ -5,6 +5,7 @@ export interface ICommonPartyCode {
   pageNo: number; // 페이지 번호
   numOfRows: number; // 한 페이지 결과 수
   sgId: number; // 선거 ID(예: 20240410)
+  pageTitle?: string; // 페이지 타이틀
 }
 
 export interface IPartyCode extends ICommonPartyCode {
@@ -23,6 +24,7 @@ export interface ICommonPartyPlcInfoInqire {
   numOfRows?: number; // 한 페이지 결과 수
   sgId: number; // 선거 ID(예: 20240410)
   partyName: string | undefined; // 정당명(예: 00당)
+  pageTitle?: string; // 페이지 타이틀
 }
 
 export interface IPartyPlcInfoInqire {
@@ -88,6 +90,7 @@ export interface ICommonWinnerProps {
   sgTypecode: number; // 선거종류코드(예: 2)
   sdName?: string; // 시도명
   sggName?: string; // 선거구명
+  pageTitle?: string; // 페이지 타이틀
 }
 
 /**
