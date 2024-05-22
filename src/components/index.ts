@@ -7,6 +7,8 @@ import PolicyDetail from './Policy/PolicyDetail';
 import Elections from './Elections/Elections';
 import ElectionsDetail from './Elections/ElectionsDetail';
 import CitySelector from './Select/CitySelector.tsx';
+import SkeletonPolicy from './Skeleton/SkeletonPolicy.tsx';
+import SkeletonElections from './Skeleton/SkeletonElections.tsx';
 
 export {
   Button,
@@ -18,4 +20,6 @@ export {
   Elections,
   ElectionsDetail,
   CitySelector,
+  SkeletonPolicy,
+  SkeletonElections,
 };

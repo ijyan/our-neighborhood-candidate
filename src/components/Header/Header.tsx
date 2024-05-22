@@ -58,7 +58,7 @@ function Header() {
   }, []);
 
   return (
-    <header className="w-full bg-white z-50 fixed border-b border-gray-800/[.06]">
+    <header className="w-full bg-white z-50 fixed border-b border-gray-800/[.06] top-0">
       {innerWidth < 1024 ? (
         <>
           <div className="px-6 h-14 flex items-center justify-between">

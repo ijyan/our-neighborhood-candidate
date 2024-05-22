@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import App from '@/App.tsx';
 import '@/index.css';
 import Home from '@/pages/Home.tsx';
@@ -16,7 +17,6 @@ import ElectionPresidential from '@/pages/elections/Presidential.tsx';
 import ElectionPresidentialDetail from '@/pages/elections/PresidentialDetail.tsx';
 // notFound
 import NotFound from '@/pages/notFound/notFound.tsx';
-import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
