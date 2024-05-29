@@ -140,7 +140,7 @@ function Header() {
             <div className="flex justify-center items-center h-16 gap-1">
               {link.map(el => (
                 <div key={el.id} className="relative group">
-                  <Button>
+                  <Button otherStyle="font-bold">
                     {el.title}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

@@ -45,7 +45,7 @@ function Elections({
       const updatedImages = res.map((item: IWinnerInfo) => {
         return {
           ...item,
-          image: `../../../src/assets/person/${item.huboid}.jpg`,
+          image: `../../../src/assets/person/${item.huboid}.webp`,
         };
       });
       setState(prev => ({
@@ -85,6 +85,7 @@ function Elections({
     }
 
     setQuery(params);
+    window.scrollTo({ top: 0 });
   };
 
   if (error) return <p>Error: {error.message}</p>;
@@ -120,8 +121,12 @@ function Elections({
                   to={`${location.pathname}/detail?sdName=${item.sdName}&sggName=${item.sggName}`}
                 >
                   <div className="flex p-3">
-                    <div className="aspect-3/4 flex justify-center items-center overflow-hidden w-full rounded-xl object-cover">
-                      <ImgLoad url={item.image} alt={item.name} />
+                    <div className="flex justify-center items-center overflow-hidden w-full rounded-xl">
+                      <ImgLoad
+                        url={item.image}
+                        alt={item.name}
+                        otherStyle="aspect-3/4 object-cover rounded-xl"
+                      />
                     </div>
                     <div className="flex flex-col p-5 w-full justify-center">
                       <div>
@@ -131,7 +136,7 @@ function Elections({
                         <p className="text-sm text-gray-500 md:text-base">
                           {item.jdName}
                         </p>
-                        <p className="text-sm text-gray-500 md:text-base">
+                        <p className="text-sm text-gray-500 md:text-base break-all">
                           {item.sggName}
                         </p>
                       </div>

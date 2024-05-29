@@ -71,7 +71,7 @@ function ElectionsDetail({
       const updatedImages = res.map((item: IWinnerInfo) => {
         return {
           ...item,
-          image: `../../../src/assets/person/${item.huboid}.jpg`,
+          image: `../../../src/assets/person/${item.huboid}.webp`,
         };
       });
       setInfo(updatedImages[0]);
@@ -90,11 +90,15 @@ function ElectionsDetail({
       {info && (
         <div className="max-w-3xl m-auto pt-20">
           <div className="flex flex-col px-6 gap-8 items-center md:flex-row md:px-6 md:py-24 md:gap-16">
-            <div className="aspect-3/4 object-cover flex justify-center items-center overflow-hidden w-full rounded-2xl max-w-80 bg-[#f8f9fb] text-center">
-              <ImgLoad url={info.image} alt={info.name} />
+            <div className="flex justify-center items-center overflow-hidden w-full rounded-2xl max-w-80 bg-[#f8f9fb] text-center">
+              <ImgLoad
+                url={info.image}
+                alt={info.name}
+                otherStyle="aspect-3/4 object-cover rounded-xl"
+              />
             </div>
             <div className="w-full pb-8">
-              <div className="text-2xl md:text-3xl font-semibold">
+              <div className="text-2xl text-gray-700 md:text-3xl font-semibold">
                 {info.name} | {info.hanjaName}
               </div>
               <ul className="py-8 flex gap-3 flex-col">
@@ -102,13 +106,13 @@ function ElectionsDetail({
                   <span className="block w-20 text-gray-500 shrink-0">
                     선거구
                   </span>
-                  <div>{info.sdName}</div>
+                  <div className="text-gray-700">{info.sdName}</div>
                 </li>
                 <li className="flex">
                   <span className="block w-20 text-gray-500 shrink-0">
                     출생
                   </span>
-                  <div>
+                  <div className="text-gray-700">
                     {formatBirthdate(info.birthday)} (
                     {calculateAge(info.birthday)}세)
                   </div>
@@ -117,21 +121,21 @@ function ElectionsDetail({
                   <span className="block w-20 text-gray-500 shrink-0">
                     학력
                   </span>
-                  <div>{info.edu}</div>
+                  <div className="text-gray-700">{info.edu}</div>
                 </li>
                 <li className="flex">
                   <span className="block w-20 text-gray-500 shrink-0">
                     직업
                   </span>
-                  <div>{info.job}</div>
+                  <div className="text-gray-700">{info.job}</div>
                 </li>
                 <li className="flex">
                   <span className="block w-20 text-gray-500 shrink-0">
                     경력
                   </span>
                   <div>
-                    <div className="mb-1">{info.career1}</div>
-                    <div>{info.career2}</div>
+                    <div className="mb-1 text-gray-700">{info.career1}</div>
+                    <div className="text-gray-700">{info.career2}</div>
                   </div>
                 </li>
               </ul>

@@ -67,6 +67,7 @@ function Policy({ pageNo, sgId, numOfRows, pageTitle }: ICommonPartyCode) {
     };
 
     setQuery(params);
+    window.scrollTo({ top: 0 });
   };
 
   if (error) return <p>Error: {error.message}</p>;
@@ -102,7 +103,7 @@ function Policy({ pageNo, sgId, numOfRows, pageTitle }: ICommonPartyCode) {
                     />
                   </div>
                   <div className="p-4 md:p-6">
-                    <h5 className="md:text-lg pb-1 text-gray-700">
+                    <h5 className="font-semibold md:text-lg pb-1 text-gray-700">
                       {item.jdName}
                     </h5>
                     <ButtonLink

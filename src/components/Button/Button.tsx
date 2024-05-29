@@ -35,7 +35,7 @@ export default function Button({
   };
 
   const buttonSize = {
-    sm: 'px-3 h-9 rounded-md text-sm ',
+    sm: 'px-3 h-9 rounded-md text-sm',
     md: 'px-4 h-10 rounded-lg text-sm',
     lg: 'px-5 h-14 rounded-lg text-base',
   };
@@ -52,8 +52,8 @@ export default function Button({
         buttonAppearance[appearance],
         buttonColor[color],
         buttonSize[size],
-        isFullWidth ? 'w-full' : '',
-        isDisabled ? 'disabled:opacity-40 cursor-not-allowed' : '',
+        isFullWidth && 'w-full',
+        isDisabled && 'disabled:opacity-40 cursor-not-allowed',
         otherStyle,
       ].join(' ')}
       type={type}
