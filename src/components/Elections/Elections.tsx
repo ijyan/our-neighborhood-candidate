@@ -101,7 +101,7 @@ function Elections({
       ) : (
         <div className="md:flex md:justify-between md:items-center pb-3 md:pb-6">
           <CitySelector sdName={sdName || ''} sggName={sggName || ''} />
-          <div className="pt-3 md:pt-0 text-gray-600 text-right">
+          <div className="text-sm pt-3 md:text-base md:pt-0 text-gray-600 text-right">
             전체 <span className="font-semibold">{state.totalCount}</span>건
           </div>
         </div>
@@ -120,16 +120,20 @@ function Elections({
                   to={`${location.pathname}/detail?sdName=${item.sdName}&sggName=${item.sggName}`}
                 >
                   <div className="flex p-3">
-                    <div className="aspect-3/4 flex justify-center items-center overflow-hidden w-full rounded-xl">
+                    <div className="aspect-3/4 flex justify-center items-center overflow-hidden w-full rounded-xl object-cover">
                       <ImgLoad url={item.image} alt={item.name} />
                     </div>
                     <div className="flex flex-col p-5 w-full justify-center">
                       <div>
-                        <h3 className="text-2xl pb-1.5 font-semibold md:text-3xl text-gray-700 md:pb-3">
+                        <h3 className="text-xl pb-1.5 font-semibold md:text-3xl text-gray-700 md:pb-3">
                           {item.name}
                         </h3>
-                        <p className="text-gray-500">{item.jdName}</p>
-                        <p className="text-gray-500">{item.sggName}</p>
+                        <p className="text-sm text-gray-500 md:text-base">
+                          {item.jdName}
+                        </p>
+                        <p className="text-sm text-gray-500 md:text-base">
+                          {item.sggName}
+                        </p>
                       </div>
                       <ButtonLink
                         otherStyle="justify-end pt-4"

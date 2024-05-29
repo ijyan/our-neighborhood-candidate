@@ -111,7 +111,7 @@ function CitySelector({
       </button>
       {isOpen && (
         <>
-          <div className="fixed inset-0 w-full shadow-none md:absolute md:inset-auto md:mt-2 md:w-96 bg-white md:shadow-md md:rounded-lg text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-30">
+          <div className="fixed inset-0 w-full shadow-none md:absolute md:inset-auto md:mt-2 md:w-96 bg-white md:shadow-md md:rounded-lg text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-50">
             <div className="md:hidden">
               <div className="text-right">
                 <button
