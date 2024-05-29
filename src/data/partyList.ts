@@ -296,4 +296,114 @@ export const PARTY_LIST: IPartyList[] = [
     partyName: '히시태그국민정책당',
     color: '#F16335',
   },
+  {
+    num: '60',
+    partyName: '정의당',
+    color: '#FFED00',
+  },
+  {
+    num: '61',
+    partyName: '국민의당',
+    color: '#006241',
+  },
+  {
+    num: '62',
+    partyName: '기본소득당',
+    color: '#00D2C3',
+  },
+  {
+    num: '63',
+    partyName: '시대전환',
+    color: '#5A147E',
+  },
+  {
+    num: '64',
+    partyName: '코리아당',
+    color: '#4F1D12',
+  },
+  {
+    num: '65',
+    partyName: '개벽의시대',
+    color: '#51a776',
+  },
+  {
+    num: '65',
+    partyName: '거지당',
+    color: '#038ED3',
+  },
+  {
+    num: '66',
+    partyName: '국민참여신당',
+    color: '#F8C400',
+  },
+  {
+    num: '67',
+    partyName: '국민혁명당',
+    color: '#013792',
+  },
+  {
+    num: '68',
+    partyName: '남북통일당',
+    color: '#012154',
+  },
+  {
+    num: '69',
+    partyName: '대한당',
+    color: '#4B3293',
+  },
+  {
+    num: '70',
+    partyName: '독도한국당',
+    color: '#0D218A',
+  },
+  {
+    num: '71',
+    partyName: '민생당',
+    color: '#00A85F',
+  },
+  {
+    num: '72',
+    partyName: '새로운물결',
+    color: '#02BB71',
+  },
+  {
+    num: '73',
+    partyName: '신자유민주연합',
+    color: '#AD469F',
+  },
+  {
+    num: '74',
+    partyName: '신한반도평화체제당',
+    color: '#292C93',
+  },
+  {
+    num: '75',
+    partyName: '자유당',
+    color: '#E8202B',
+  },
+  {
+    num: '76',
+    partyName: '직능당',
+    color: '#27AAE1',
+  },
+  {
+    num: '77',
+    partyName: '친박연대',
+    color: '#0C449B',
+  },
+  {
+    num: '78',
+    partyName: '한국복지당',
+    color: '#EA5404',
+  },
+  {
+    num: '79',
+    partyName: '한반도미래연합',
+    color: '#E33334',
+  },
+  {
+    num: '80',
+    partyName: '혁명21',
+    color: '#044EA3',
+  },
 ];
