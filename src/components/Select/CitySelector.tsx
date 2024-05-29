@@ -145,7 +145,7 @@ function CitySelector({
                   // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
                   <li
                     key={option.id}
-                    className={`text-gray-600 cursor-pointer pl-4 leading-10 rounded-md hover:bg-[#f8f9fb] mb-0.5 last:mb-0${option.city === select.city ? ' !bg-[#f3f4f8] text-green-500 font-bold' : ''}`}
+                    className={`text-gray-600 cursor-pointer pl-4 leading-10 rounded-md hover:bg-[#f8f9fb] mb-0.5 last:mb-0${option.city === select.city ? ' !bg-[#f3f4f8] text-green-500 font-semibold' : ''}`}
                     onClick={() => handleSelect(option)}
                   >
                     {option.city[0]}
@@ -160,7 +160,7 @@ function CitySelector({
                     <li
                       // eslint-disable-next-line react/no-array-index-key
                       key={idx}
-                      className={`text-gray-600 cursor-pointer pl-4 leading-10 rounded-md hover:bg-[#f8f9fb] mb-0.5 last:mb-0${item === select.fullCity ? ' !bg-[#f3f4f8] text-green-500 font-bold' : ''}`}
+                      className={`text-gray-600 cursor-pointer pl-4 leading-10 rounded-md hover:bg-[#f8f9fb] mb-0.5 last:mb-0${item === select.fullCity ? ' !bg-[#f3f4f8] text-green-500 font-semibold' : ''}`}
                       onClick={() =>
                         setSelect(prev => ({
                           ...prev,
