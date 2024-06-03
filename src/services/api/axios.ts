@@ -14,12 +14,12 @@ const instance = axios.create({
 // 응답 인터셉터
 instance.interceptors.response.use(
   response => {
-    if (response.status === 304) {
-      return Promise.resolve({
-        ...response,
-        data: null,
-      });
-    }
+    // if (response.status === 304) {
+    //   return Promise.resolve({
+    //     ...response,
+    //     data: null,
+    //   });
+    // }
     return response;
   },
   error => {
