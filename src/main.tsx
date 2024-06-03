@@ -16,7 +16,7 @@ import ElectionsParliamentaryDetail from '@/pages/elections/ParliamentaryDetail.
 import ElectionPresidential from '@/pages/elections/Presidential.tsx';
 import ElectionPresidentialDetail from '@/pages/elections/PresidentialDetail.tsx';
 // notFound
-// import NotFound from '@/pages/notFound/notFound.tsx';
+import NotFound from '@/pages/notFound/notFound.tsx';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         <App />
       </HelmetProvider>
     ),
-    // errorElement: <NotFound />,
+    errorElement: <NotFound />,
     children: [
       { index: true, path: '/', element: <Home /> },
       {
